@@ -15,19 +15,19 @@ import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class PaintView extends View {
+public class PaintColorFilterView extends View {
 
-    public PaintView(Context context) {
+    public PaintColorFilterView(Context context) {
         super(context);
         init();
     }
 
-    public PaintView(Context context, AttributeSet attrs) {
+    public PaintColorFilterView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public PaintView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public PaintColorFilterView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }

@@ -16,6 +16,7 @@ public class SaveLayerView extends View {
     private Paint mRedP;
     private Paint mGreenP;
     private Xfermode mDstOverXfermode;
+    private Paint mPaint;
 
     public SaveLayerView(Context context) {
         super(context);
@@ -50,6 +51,47 @@ public class SaveLayerView extends View {
         //useSaveLayer(canvas);
         //useSaveLayerAlpha(canvas);
         useSaveLayerHasAlphaOrFullColor(canvas);
+    }
+
+    private void saveMatrix(Canvas canvas) {
+        //绘制蓝色矩形
+        mPaint.setColor(getResources().getColor(android.R.color.holo_blue_light));
+        canvas.drawRect(0, 0, 200, 200, mPaint);
+        //保存
+        canvas.save();
+        //裁剪画布,并绘制红色矩形
+        mPaint.setColor(getResources().getColor(android.R.color.holo_red_light));
+        //平移.
+        //canvas.translate(100, 0);
+        //缩放.
+        //canvas.scale(0.5f, 0.5f);
+        //旋转
+        //canvas.rotate(-45);
+        //倾斜
+        canvas.skew(0, 0.5f);
+        canvas.drawRect(0, 0, 200, 200, mPaint);
+        //恢复画布
+        canvas.restore();
+        //绘制绿色矩形
+        mPaint.setColor(getResources().getColor(android.R.color.holo_green_light));
+        canvas.drawRect(0, 0, 50, 200, mPaint);
+    }
+
+    private void saveClip(Canvas canvas) {
+        //绘制蓝色矩形
+        mPaint.setColor(getResources().getColor(android.R.color.holo_blue_light));
+        canvas.drawRect(0, 0, 200, 200, mPaint);
+        //保存.
+        canvas.save();
+        //裁剪画布,并绘制红色矩形
+        mPaint.setColor(getResources().getColor(android.R.color.holo_red_light));
+        canvas.clipRect(150, 0, 200, 200);
+        canvas.drawRect(0, 0, 200, 200, mPaint);
+        //恢复画布
+        canvas.restore();
+        //绘制绿色矩形
+        mPaint.setColor(getResources().getColor(android.R.color.holo_green_light));
+        canvas.drawRect(0, 0, 50, 200, mPaint);
     }
 
     private void useSaveLayer(Canvas canvas) {
